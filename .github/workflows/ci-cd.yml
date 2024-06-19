@@ -15,9 +15,12 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: action/setup-node@v2
+        uses: action/setup-node@2
         with:
           node-version: '20.9.0'
 
       - name: install deps
-        run:  npm install
+        run: npm install
+
+      - name: build docker image
+        run: docker build -t craftexplosion:1.0 .
