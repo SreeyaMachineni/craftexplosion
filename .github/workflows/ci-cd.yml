@@ -10,20 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
       - name: Enable Corepack before setting up Node
 +       run: corepack enable
-
       - name: Use Node.js
-        uses: action/setup-node@v2.1.2
+        uses: action/setup-node@v4
         with:
-          node-version: '20.9.0'
-
+          node-version: '20.x'
+          cache: 'npm'
       - name: install deps
         run: npm install
-
       - name: build docker image
         run: docker build -t craftexplosion:1.0 .
