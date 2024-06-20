@@ -9,17 +9,20 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Enable Corepack before setting up Node
-+       run: corepack enable
-      - name: Use Node.js
-        uses: action/setup-node@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '20.x'
-          cache: 'npm'
+          node-version: ${{ matrix.node-version }}
+          
       - name: install deps
         run: npm install
       - name: build docker image
