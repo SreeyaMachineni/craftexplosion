@@ -64,7 +64,7 @@ jobs:
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKRUHUB_USERNAME }}/reactsample:latest
+          image: ${{ secrets.DOCKRUHUB_USERNAME }}/craftexplosion:latest
           run: |
             echo "runing the docker image"
 
